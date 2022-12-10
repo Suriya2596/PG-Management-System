@@ -34,13 +34,13 @@ usersController.login = (req, res) => {
                     .then((match) => {
                         if (match) {
                             const tokenData = {
-                                id: user._id,
+                                _id: user._id,
                                 userName: user.userName,
                                 email: user.email,
                                 mobile: user.mobile
                             }
                             const token = jwt.sign(tokenData, process.env.JWT_SECRET, { expiresIn: "1d" })
-                            res.json({ "tokenPG": token })
+                            res.json({ "tokenPG": `Bearer ${token}` })
                         } else {
                             res.json({ errors: "Invaliadte email or passwordd", message: "Invalidate Email or Password" })
                         }
@@ -55,6 +55,10 @@ usersController.login = (req, res) => {
         .catch((err) => {
             res.json({ errors: "Invaliadte email or passwordd", message: "Invalidate Email or Password" })
         })
+}
+
+usersController.account = (req,res)=>{
+    res.json(req.user)
 }
 
 module.exports = usersController
