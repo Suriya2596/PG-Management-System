@@ -1,7 +1,7 @@
 const mongoose = require("mongoose")
 
 const configureDB = ()=>{
-    mongoose.connect("mongodb://127.0.0.1:27017/pgmanagement")
+    mongoose.connect("mongodb://127.0.0.1:27017/pgmanagementapp")
         .then(()=>{
             console.log("connected to database")
         })
