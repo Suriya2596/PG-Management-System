@@ -13,5 +13,8 @@ routes.delete("/api/user",authentication,authorization,usersController.destroy)
 
 routes.post("/api/user/building",authentication,buildingController.create)
 routes.get("/api/user/building",authentication,buildingController.list)
+routes.put("/api/user/building/:id",authentication,buildingController.update)
+routes.get("/api/user/building/:id",authentication,buildingController.show)
+routes.delete("/api/user/building/:id",authentication,buildingController.destroy)
 
 module.exports = routes

@@ -24,5 +24,39 @@ buildingController.list = (req,res)=>{
         })
 }
 
+buildingController.update = (req,res)=>{
+    const body = req.body
+    const id = req.params.id 
+    Building.findOneAndUpdate({_id:id,user:req.user._id},body,{new:true,runValidators:true})
+        .then((building)=>{
+            res.json(building)
+        })
+        .catch((err)=>{
+            res.json(err)
+        })
+}
+
+buildingController.show = (req,res)=>{
+    const id = req.params.id
+    Building.findOne({_id:id,user:req.user._id})
+        .then((building)=>{
+            res.json(building)
+        })
+        .catch((err)=>{
+            res.json(err)
+        })
+}
+
+buildingController.destroy = (req,res)=>{
+    const id = req.params.id
+    Building.findOneAndDelete({_id:id,user:req.user._id})
+        .then((building)=>{
+            res.json(building)
+        })
+        .catch((err)=>{
+            res.json(err)
+        })
+}
+
 
 module.exports = buildingController
