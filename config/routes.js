@@ -4,6 +4,7 @@ const routes = express.Router()
 const {authentication,authorization} = require("../app/middlewares/authentication")
 const usersController = require("../app/controllers/usersController")
 const buildingController = require("../app/controllers/buildingController")
+const roomsController = require("../app/controllers/roomsController")
 
 routes.post("/api/user/register",usersController.register)
 routes.post("/api/user/login",usersController.login)
@@ -16,5 +17,12 @@ routes.get("/api/user/building",authentication,buildingController.list)
 routes.put("/api/user/building/:id",authentication,buildingController.update)
 routes.get("/api/user/building/:id",authentication,buildingController.show)
 routes.delete("/api/user/building/:id",authentication,buildingController.destroy)
+
+routes.post("/api/user/room",authentication,roomsController.create)
+routes.get("/api/user/room",authentication,roomsController.list)
+routes.put("/api/user/room/:id",authentication,roomsController.update)
+routes.get("/api/user/room/:id",authentication,roomsController.show)
+routes.delete("/api/user/room/:id",authentication,roomsController.destroy)
+
 
 module.exports = routes
