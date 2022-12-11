@@ -61,4 +61,25 @@ usersController.account = (req,res)=>{
     res.json(req.user)
 }
 
+usersController.update = (req,res)=>{
+    const body = req.body
+    User.findOneAndUpdate({_id:req.user._id},body,{runValidators:true,new:true})
+        .then((user)=>{
+            res.json(user)
+        })
+        .catch((err)=>{
+            res.json(err)
+        })
+}
+
+usersController.destroy = (req,res)=>{
+    User.findOneAndDelete({_id:req.user._id})
+        .then((user)=>{
+            res.json(user)
+        })
+        .catch((err)=>{
+            res.json(err)
+        })
+}
+
 module.exports = usersController
