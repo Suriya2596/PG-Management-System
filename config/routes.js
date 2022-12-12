@@ -7,6 +7,7 @@ const buildingController = require("../app/controllers/buildingController")
 const roomsController = require("../app/controllers/roomsController")
 const bedsController = require("../app/controllers/bedsController")
 const tenantsController = require("../app/controllers/tenantsController")
+const expensesController = require("../app/controllers/expensesController")
 
 routes.post("/api/user/register",usersController.register)
 routes.post("/api/user/login",usersController.login)
@@ -38,6 +39,12 @@ routes.put("/api/user/tenant/:id",authentication,tenantsController.update)
 routes.put("/api/user/tenant/rent/:id",authentication,tenantsController.updateRent)
 routes.get("/api/user/tenant/:id",authentication,tenantsController.show)
 routes.delete("/api/user/tenant/:id",authentication,authorization,tenantsController.destroy)
+
+routes.post("/api/user/expense",authentication,expensesController.create)
+routes.get("/api/user/expense",authentication,expensesController.list)
+routes.put("/api/user/expense/:id",authentication,expensesController.update)
+routes.get("/api/user/expense/:id",authentication,expensesController.show)
+routes.delete("/api/user/expense/:id",authentication,authorization,expensesController.destroy)
 
 
 module.exports = routes
