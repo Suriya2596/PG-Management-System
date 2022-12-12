@@ -6,6 +6,7 @@ const usersController = require("../app/controllers/usersController")
 const buildingController = require("../app/controllers/buildingController")
 const roomsController = require("../app/controllers/roomsController")
 const bedsController = require("../app/controllers/bedsController")
+const tenantsController = require("../app/controllers/tenantsController")
 
 routes.post("/api/user/register",usersController.register)
 routes.post("/api/user/login",usersController.login)
@@ -30,5 +31,13 @@ routes.get("/api/user/bed",authentication,bedsController.list)
 routes.put("/api/user/bed/:id",authentication,bedsController.update)
 routes.get("/api/user/bed/:id",authentication,bedsController.show)
 routes.delete("/api/user/bed/:id",authentication,authorization,bedsController.destroy)
+
+routes.post("/api/user/tenant",authentication,tenantsController.create)
+routes.get("/api/user/tenant",authentication,tenantsController.list)
+routes.put("/api/user/tenant/:id",authentication,tenantsController.update)
+routes.put("/api/user/tenant/rent/:id",authentication,tenantsController.updateRent)
+routes.get("/api/user/tenant/:id",authentication,tenantsController.show)
+routes.delete("/api/user/tenant/:id",authentication,authorization,tenantsController.destroy)
+
 
 module.exports = routes
