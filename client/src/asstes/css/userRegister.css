@@ -1,14 +1,5 @@
-.form-submit{
-    margin-top: 16px;
-    padding: 14px 18px;
-    color: #fff;
-    outline: 0px;
-    border: none;
-    border-radius: 4px;
-    background-color: #5E34F1;
-    box-shadow: 2px 8px 18px 0px #5d34f170;
-}
-.form-submit:hover{
-    background-color: #0a0421;
-    box-shadow: 2px 8px 18px 0px #0a042176;
+.register-img{
+    width: 250px;
+    height: auto;
+    margin: 20px 0px;
 }

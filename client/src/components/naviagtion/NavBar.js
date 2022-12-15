@@ -28,19 +28,25 @@ const NavBar = (props)=>{
                 isLoggedin && (
                     <div>
                         <Link to="/">Dashboard</Link>
-                        <Link to="" onClick={()=>{
+                        <Link to="/buildings">Buildings</Link>
+                        <Link to="/" onClick={()=>{
                             localStorage.clear()
                             handleIsLoggedIn()
+                            props.history.push("/")
                         }}>Logout</Link>
                     </div>
                 )
             }
+
+            
 
             <Route path={"/"} render={(props)=>{
                 return <Home {...props} handleIsLoggedIn={handleIsLoggedIn}/>
             }} exact/>
 
             <Route  path={"/register"} component={UserRegister} exact />
+
+            <PrivateRouter path={"/buildings"} component={Buildings}/>
 
         </>
     )

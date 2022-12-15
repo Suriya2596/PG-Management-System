@@ -1,9 +1,12 @@
 import React from "react"
 
+import BuildingForm from "./BuildingForm"
+
 const Buildings = (props)=>{
     return (
         <div>
-            <h2>Buildings</h2>
+            <h5>Buildings</h5>
+            <BuildingForm />
         </div>
     )
 }
