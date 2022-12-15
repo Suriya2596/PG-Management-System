@@ -25,7 +25,12 @@ const UserRegister = (props) => {
             password:Yup.string().min(8,"minimun 8 character").max(128,"maxmun 128 character").required().typeError("Password is required"),
         }),
         onSubmit: function ( values , { resetForm } ) {
-            dispatch( startUserRegister( values,resetForm ) )
+            const reDirect = ()=>{
+                resetForm()
+                window.alert(`Successfully Registed`)
+                props.history.push("/")
+            }
+            dispatch( startUserRegister( values,reDirect ) )
         }
     })
     return (

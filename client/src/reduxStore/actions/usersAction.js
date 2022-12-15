@@ -1,13 +1,17 @@
 import axios from "axios"
 
-export const startUserRegister = (requestData,resetForm)=>{
+export const startUserRegister = (requestData,reDirect)=>{
     return (dispatch)=>{
         axios.post("http://localhost:3500/api/user/register",requestData)
             .then((response)=>{
                 const userData = response.data
                 console.log(userData)
-                dispatch( userRegister(userData) )
-                resetForm()
+                if(userData.hasOwnProperty("errors")){
+                    window.alert(userData.message)
+                }else{
+                    dispatch( userRegister(userData) )
+                    reDirect()
+                }
             })
             .catch((err)=>{
                 window.alert(`Register errors : ${err.message}`)
