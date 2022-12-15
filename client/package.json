@@ -20,7 +20,12 @@
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
     "validator": "^13.7.0",
+<<<<<<< HEAD
     "web-vitals": "^2.1.4"
+=======
+    "web-vitals": "^2.1.4",
+    "yup": "^0.32.11"
+>>>>>>> naviagtion
   },
   "scripts": {
     "start": "react-scripts start",
