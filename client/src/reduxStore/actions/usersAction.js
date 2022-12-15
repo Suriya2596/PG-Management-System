@@ -24,3 +24,19 @@ const userRegister = (data)=>{
         payload:data
     }
 }
+
+export const startUserLogin = (requestData,reDirect)=>{
+    return (dispatch)=>{
+        axios.post("http://localhost:3500/api/user/login",requestData)
+            .then((response)=>{
+                const userData = response.data
+                if(userData.hasOwnProperty("errors")){
+                    window.alert(userData.message)
+                }else{
+                    console.log(userData)
+                    localStorage.setItem("tokenPG",userData.tokenPG)
+                    reDirect()
+                }
+            })
+    }
+}
