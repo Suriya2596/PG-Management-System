@@ -23,30 +23,26 @@ const NavBar = (props)=>{
         setIsLoggedIn(!isLoggedin)
     }
     return (
-        <div>
-            <h2>NavBar</h2>
+        <>
             {
-                isLoggedin ? (
-                    <>
-                        <Link to="/dashboard">Dashboard</Link>
-                    </>
-                ) : (
-                    <>
-                        <Link to="/register">User Register</Link>
-                        <Link to="/login">User Login</Link>
-                    </>
+                isLoggedin && (
+                    <div>
+                        <Link to="/">Dashboard</Link>
+                        <Link to="" onClick={()=>{
+                            localStorage.clear()
+                            handleIsLoggedIn()
+                        }}>Logout</Link>
+                    </div>
                 )
             }
 
-            <Route path={"/"} component={ Home } exact/>
-            <PrivateRouter path={"/dashboard"} component={Dashboard} exact/>
-
-            <Route  path={"/register"} component={UserRegister} exact />
-            <Route  path={"/login"} render={(props)=>{
-                return <UserLogin {...props} handleIsLoggedIn={handleIsLoggedIn}/>
+            <Route path={"/"} render={(props)=>{
+                return <Home {...props} handleIsLoggedIn={handleIsLoggedIn}/>
             }} exact/>
 
-        </div>
+            <Route  path={"/register"} component={UserRegister} exact />
+
+        </>
     )
 }
 

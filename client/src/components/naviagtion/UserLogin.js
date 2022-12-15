@@ -2,9 +2,10 @@ import React from "react"
 import { useFormik } from "formik"
 import * as Yup from "yup"
 import { TextField, FormControl } from "@mui/material"
+import { Link } from "react-router-dom"
 import { useDispatch } from "react-redux"
 import { startUserLogin } from "../../reduxStore/actions/usersAction"
-
+import "../../asstes/css/userRegister.css"
 
 const UserLogin = (props) => {
     const {handleIsLoggedIn} = props
@@ -23,7 +24,7 @@ const UserLogin = (props) => {
             const reDirect = ()=>{
                 resetForm()
                 window.alert("Successfully login")
-                props.history.push("/dashboard")
+                props.history.push("/")
                 handleIsLoggedIn()
             }
             dispatch( startUserLogin(values,reDirect) )
@@ -32,6 +33,7 @@ const UserLogin = (props) => {
     
     return (
         <div>
+            <h5>Login in to your account</h5>
             <form onSubmit={formik.handleSubmit}>
                 <FormControl>
                     <TextField
@@ -62,9 +64,10 @@ const UserLogin = (props) => {
                             <span style={{color:"red"}}>{formik.errors.password}</span>
                         )
                     }
-                    <input type="submit" value={"Submit"} />
+                    <input type="submit" value={"Login"} className="form-submit" />
                 </FormControl>
             </form>
+            <p>Don't have an account yet? <Link to={"/register"}>Register Now</Link></p>
         </div>
     )
 }

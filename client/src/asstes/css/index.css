@@ -5,9 +5,69 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+/*----------------------------------------*/
+/* 1.Global CSS*/
+/*----------------------------------------*/
+
+
+body{
+  box-sizing: border-box;
+  line-height: 1.5;
+}
+h1,h2,h3,h4,h5,h6{
+  font-weight: 500;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+p{
+  font-weight: 500;
+  line-height: 1.5;
+}
+a{
+  font-size:16px;
+  font-weight: 500;
+  color: #5E34F1;
+  text-decoration: none;
+}
+a:hover{
+  color: #0f0829;
+  text-decoration: underline;
+}
+img{
+  margin-bottom:0px;
+  object-fit: cover;
+}
+
+/*----------------------------------------*/
+/* 2.Common CSS*/
+/*----------------------------------------*/
+h1.h2,h3,h4,h5,h6{
+  color: #0b0424;
+}
+h1{
+  font-size: 70px;
+}
+h2{
+  font-size: 48px;
+}
+h3{
+  font-size: 30px;
+}
+h4{
+  font-size: 24px;
+}
+h5{
+  font-size: 22px;
+}
+p{
+  font-size: 16px;
+  color: #807f84;
 }
