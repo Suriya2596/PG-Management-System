@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux"
 import { startBuildingCreate } from "../../reduxStore/actions/buildingsAction"
 
 const BuildingForm = (props) => {
+    const {handleClose} = props
     const dispatch = useDispatch()
     const formik = useFormik({
         initialValues:{
@@ -22,11 +23,16 @@ const BuildingForm = (props) => {
         }),
         onSubmit:function(value,{resetForm}){
             console.log(value)
-            dispatch( startBuildingCreate(value) )
+            const resolve = ()=>{
+                handleClose()
+                resetForm()
+            }
+            dispatch( startBuildingCreate(value,resolve) )
         }
     })
     return (
         <div>
+            <h5>Add Building</h5>
             <form onSubmit={formik.handleSubmit}>
                 <FormControl>
                     <TextField
@@ -86,6 +92,7 @@ const BuildingForm = (props) => {
                         )
                     }
                     <input type={"submit"} value="Add Building" className="form-submit"/>
+                    <button onClick={handleClose} className="secondary-btn">Cancle</button>
                 </FormControl>
             </form>
         </div>

@@ -1,6 +1,6 @@
 import axios from "axios"
 
-export const startBuildingCreate = (requestData)=>{
+export const startBuildingCreate = (requestData,resolve)=>{
     return (dispatch)=>{
         axios.post("http://localhost:3500/api/user/building",requestData,{
             headers:{"Authorization":localStorage.getItem("tokenPG")}
@@ -12,6 +12,7 @@ export const startBuildingCreate = (requestData)=>{
                 }else{
                     window.alert("added")
                     dispatch( buildingCreate(buildingData) )
+                    resolve()
                 }
             })
     }

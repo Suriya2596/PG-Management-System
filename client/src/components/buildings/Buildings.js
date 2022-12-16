@@ -1,12 +1,11 @@
 import React from "react"
-
-import BuildingForm from "./BuildingForm"
+import AddBuildingModal from "./AddBuildingModal"
 
 const Buildings = (props)=>{
     return (
         <div>
             <h5>Buildings</h5>
-            <BuildingForm />
+            <AddBuildingModal />
         </div>
     )
 }
