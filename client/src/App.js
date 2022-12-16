@@ -9,8 +9,10 @@ const App = (props) => {
   const dispatch = useDispatch()
 
   useEffect(()=>{
-    dispatch( startUserAccount() )
-    dispatch( startBuildingList() )
+    if(localStorage.getItem("tokenPG")){
+      dispatch( startUserAccount() )
+      dispatch( startBuildingList() )
+    }
   },[])
 
   return (

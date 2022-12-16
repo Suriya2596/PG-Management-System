@@ -9,16 +9,18 @@ import configureStore from './reduxStore/store/configureStore';
 
 const store = configureStore()
 
-store.subscribe(()=>{
-  console.log(store.getState(),"changes")
+store.subscribe(() => {
+  console.log(store.getState(), "changes")
 })
-console.log(store.getState(),"state")
+console.log(store.getState(), "state")
 
 ReactDOM.render(
   <BrowserRouter>
-    <React.StrictMode>
-      <Provider store={store} ><App /></Provider>
-    </React.StrictMode>
+    <Provider store={store} >
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    </Provider>
   </BrowserRouter>,
   document.getElementById('root')
 );

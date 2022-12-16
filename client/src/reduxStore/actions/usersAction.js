@@ -9,19 +9,12 @@ export const startUserRegister = (requestData,reDirect)=>{
                 if(userData.hasOwnProperty("errors")){
                     window.alert(userData.message)
                 }else{
-                    dispatch( userRegister(userData) )
                     reDirect()
                 }
             })
             .catch((err)=>{
                 window.alert(`Register errors : ${err.message}`)
             })
-    }
-}
-const userRegister = (data)=>{
-    return {
-        type:"USER_REGISTER",
-        payload:data
     }
 }
 
@@ -37,6 +30,9 @@ export const startUserLogin = (requestData,reDirect)=>{
                     localStorage.setItem("tokenPG",userData.tokenPG)
                     reDirect()
                 }
+            })
+            .catch((err)=>{
+                window.alert(`Login errors : ${err.message}`)
             })
     }
 }
@@ -54,6 +50,9 @@ export const startUserAccount = ()=>{
                 }else{
                     dispatch( userAccount(userData) )
                 }
+            })
+            .catch((err)=>{
+                window.alert(`Account errors : ${err.message}`)
             })
     }
 }
