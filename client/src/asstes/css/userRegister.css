@@ -1,5 +1,8 @@
-.register-img{
-    width: 250px;
+.register-login-img{
+    width: 300px;
     height: auto;
     margin: 20px 0px;
+}
+.register-img{
+    width: 350px !important;
 }

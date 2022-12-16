@@ -5,6 +5,12 @@ const usersReducer = (state=initialValue,action)=>{
         case "USER_REGISTER" : {
             return {...action.payload}
         }
+        case "USER_ACCOUNT":{
+            return {...state,...action.payload}
+        }
+        case "LOGOUT":{
+            return {}
+        }
         default :{
             return state
         }

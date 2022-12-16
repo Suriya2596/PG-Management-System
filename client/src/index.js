@@ -9,6 +9,11 @@ import configureStore from './reduxStore/store/configureStore';
 
 const store = configureStore()
 
+store.subscribe(()=>{
+  console.log(store.getState(),"changes")
+})
+console.log(store.getState(),"state")
+
 ReactDOM.render(
   <BrowserRouter>
     <React.StrictMode>

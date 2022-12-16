@@ -1,9 +1,18 @@
-import React from "react"
+import React, { useEffect } from "react"
+import {useDispatch} from "react-redux"
+import { startUserAccount } from "./reduxStore/actions/usersAction"
+import { startBuildingList } from "./reduxStore/actions/buildingsAction"
 import NavBar from "./components/naviagtion/NavBar"
-import { Container } from "@mui/system"
 import "./asstes/css/App.css"
 
 const App = (props) => {
+  const dispatch = useDispatch()
+
+  useEffect(()=>{
+    dispatch( startUserAccount() )
+    dispatch( startBuildingList() )
+  },[])
+
   return (
       <>
         <NavBar />

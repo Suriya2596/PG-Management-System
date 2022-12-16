@@ -21,7 +21,7 @@ const Home = (props) => {
                     <Grid container spacing={2} className="login-container" >
                         <Grid item xs={12} md={6} className="login-sub-conatiner">
                             <h3>PG Management System</h3>
-                            <img src={loginImg} alt="loginImg" width={"400px"} height={"auto"} />
+                            <img src={loginImg} alt="loginImg" className="register-img register-login-img"/>
                             <p className="about-app">
                                 By using Pg management app , you can add your buildings , 
                                 tenant&#8216;s details and rent ,update expense of building so can view income&#8216;s of buildings.

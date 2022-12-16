@@ -40,3 +40,32 @@ export const startUserLogin = (requestData,reDirect)=>{
             })
     }
 }
+
+
+export const startUserAccount = ()=>{
+    return (dispatch)=>{
+        axios.get("http://localhost:3500/api/user/",{
+            headers:{ "Authorization" : localStorage.getItem("tokenPG") }
+        })
+            .then((response)=>{
+                const userData = response.data
+                if(userData.hasOwnProperty("errors")){
+                    window.alert(userData.message)
+                }else{
+                    dispatch( userAccount(userData) )
+                }
+            })
+    }
+}
+const userAccount = (data)=>{
+    return {
+        type:"USER_ACCOUNT",
+        payload:data
+    }
+}
+
+export const startUserLogout = ()=>{
+    return {
+        type:"LOGOUT"
+    }
+}

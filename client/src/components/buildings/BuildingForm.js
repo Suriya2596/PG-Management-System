@@ -2,8 +2,11 @@ import React from "react"
 import { TextField, FormControl } from "@mui/material"
 import { useFormik } from "formik"
 import * as Yup from "yup"
+import { useDispatch } from "react-redux"
+import { startBuildingCreate } from "../../reduxStore/actions/buildingsAction"
 
 const BuildingForm = (props) => {
+    const dispatch = useDispatch()
     const formik = useFormik({
         initialValues:{
             title:"",
@@ -19,6 +22,7 @@ const BuildingForm = (props) => {
         }),
         onSubmit:function(value,{resetForm}){
             console.log(value)
+            dispatch( startBuildingCreate(value) )
         }
     })
     return (
