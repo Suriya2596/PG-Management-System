@@ -17,9 +17,6 @@ const BuildingList = (props) => {
         })
     })
 
-
-    console.log(rows)
-
     return (
         <div>
             <TableContainer component={Paper} sx={{ maxWidth: 800 }} size="small">
