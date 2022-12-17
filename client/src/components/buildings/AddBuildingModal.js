@@ -19,7 +19,7 @@ const AddBuildingModal = (props) => {
       };
     return (
         <div>
-            <butoon onClick={handleOpen} className="primary-btn">Add Building</butoon>
+            <button onClick={handleOpen} className="primary-btn">Add Building</button>
             <Modal
                 open={open}
                 onClose={handleClose}
