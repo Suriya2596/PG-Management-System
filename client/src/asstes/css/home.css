@@ -32,11 +32,13 @@
 
 @media(max-width:991px){
     .login-container{
-        position: inherit;
+        position: initial;
         height: auto;
     }
     .login-container::after{
-        position: inherit;
+        position: initial;
+        height: 0vh;
+        width: 0px;
     }
     .about-app{
         margin: auto ;

@@ -9,6 +9,15 @@ const buildingsReducer = ( state=initialValue,action )=>{
         case "BUILDING_LIST" :{
             return [...action.payload]
         }
+        case "BUILDING_UPDATE" :{
+            return state.map((building)=>{
+                if(action.payload._id===building._id){
+                    return {...building,...action.payload}
+                }else{
+                    return {...building}
+                }
+            })
+        }
         case "LOGOUT":{
             return []
         }

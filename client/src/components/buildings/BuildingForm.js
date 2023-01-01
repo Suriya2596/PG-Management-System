@@ -2,32 +2,37 @@ import React from "react"
 import { TextField, FormControl } from "@mui/material"
 import { useFormik } from "formik"
 import * as Yup from "yup"
-import { useDispatch } from "react-redux"
-import { startBuildingCreate } from "../../reduxStore/actions/buildingsAction"
+import { useSelector } from "react-redux"
 
 const BuildingForm = (props) => {
-    const {handleClose} = props
-    const dispatch = useDispatch()
+    const {handleClose,formSubmmit,_id} = props
+
+    const building = useSelector((state)=>{
+        return state.buildings.find((build)=>{
+            return !build.isDeleted && build._id === _id
+        })
+    })
+
+    console.log(building)
     const formik = useFormik({
         initialValues:{
-            title:"",
-            floors:"",
-            rooms:"",
-            beds:""
+            title:building.title?building.title:"",
+            floors:building.floors?building.floors:"",
+            rooms:building.rooms?building.rooms:"",
+            beds:building.beds?building.beds:""
         },
         validationSchema:Yup.object({
-            title:Yup.string().required(),
-            floors:Yup.number().required(),
-            rooms:Yup.number().required(),
-            beds:Yup.number().required()
+            title:Yup.string().required().typeError("title is requried"),
+            floors:Yup.number().required().typeError("Enter No of floors in number"),
+            rooms:Yup.number().required().typeError("Enter No of rooms in number"),
+            beds:Yup.number().required().typeError("Enter No of beds in number"),
         }),
         onSubmit:function(value,{resetForm}){
-            console.log(value)
             const resolve = ()=>{
                 handleClose()
                 resetForm()
             }
-            dispatch( startBuildingCreate(value,resolve) )
+            formSubmmit(value,resolve)
         }
     })
     return (
@@ -91,7 +96,7 @@ const BuildingForm = (props) => {
                             <span style={{color:"red"}}>{formik.errors.beds}</span>
                         )
                     }
-                    <input type={"submit"} value="Add Building" className="form-submit"/>
+                    <input type={"submit"} value={_id?"Submit Edited":"Add Buildings"} className="form-submit"/>
                     <button onClick={handleClose} className="secondary-btn">Cancle</button>
                 </FormControl>
             </form>

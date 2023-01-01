@@ -1,9 +1,9 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { startBuildingList } from "../../reduxStore/actions/buildingsAction"
 import { TableContainer, Table, TableHead, TableBody, TableCell, TableRow, Paper } from "@mui/material"
-import DeleteIcon from '@mui/icons-material/Delete';
-import ModeIcon from '@mui/icons-material/Mode';
+import BuildingItem from "./BuildingItem"
+
 const BuildingList = (props) => {
     const dispatch = useDispatch()
 
@@ -16,6 +16,7 @@ const BuildingList = (props) => {
             return !building.isDeleted
         })
     })
+    
 
     return (
         <div>
@@ -33,23 +34,7 @@ const BuildingList = (props) => {
                     </TableHead>
                     <TableBody>
                         {rows.map((row) => (
-                            <TableRow
-                                key={row._id}
-                                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                            >
-                                <TableCell component="th" scope="row">
-                                    {row.title}
-                                </TableCell>
-                                <TableCell align="right">{row.floors}</TableCell>
-                                <TableCell align="right">{row.rooms}</TableCell>
-                                <TableCell align="right">{row.beds}</TableCell>
-                                <TableCell align="right">
-                                    <ModeIcon />
-                                </TableCell>
-                                <TableCell align="right">
-                                    <DeleteIcon />
-                                </TableCell>
-                            </TableRow>
+                            <BuildingItem key={row._id} {...row}/>
                         ))}
                     </TableBody>
                 </Table>

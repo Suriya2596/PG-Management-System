@@ -62,6 +62,31 @@ const buildingList = (data) => {
     }
 }
 
+export const startBuildingUpdate = (requestData,resolve,_id)=>{
+    return (dispatch)=>{
+        axios.put(`http://localhost:3500/api/user/building/${_id}`,requestData ,{
+            headers:{
+                "Authorization":localStorage.getItem("tokenPG")
+            }
+        })
+            .then((response)=>{
+                const buildingData = response.data
+                if (buildingData.hasOwnProperty("errors")) {
+                    window.alert(buildingData.message)
+                } else {
+                    window.alert("added")
+                    dispatch(buildingUpdate(buildingData))
+                    resolve()
+                }
+            })
+    }
+}
+const buildingUpdate = (data)=>{
+    return {
+        type:"BUILDING_UPDATE",
+        payload:data
+    }
+}
 
 export const startBuildingLogout = () => {
     return {
