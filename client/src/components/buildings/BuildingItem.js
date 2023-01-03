@@ -8,12 +8,19 @@ import { startBuildingUpdate } from "../../reduxStore/actions/buildingsAction";
 const BuildingItem = (props) => {
     const { _id, title, floors, rooms, beds } = props
     const dispatch = useDispatch()
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
     const formSubmmit = (data,resolve)=>{
-        dispatch(startBuildingUpdate(data,resolve,_id))
+        dispatch(startBuildingUpdate(data,_id,resolve))
+    }
+    const handleBuildDelete = ()=>{
+        const data = {isDeleted:true}
+        const resolve = ()=>{
+            window.alert("Deleteds Successfully")
+        }
+        dispatch(startBuildingUpdate(data,_id,resolve))
     }
 
     return (
@@ -32,7 +39,7 @@ const BuildingItem = (props) => {
                     <ModeIcon onClick={handleOpen} />
                 </TableCell>
                 <TableCell align="right">
-                    <DeleteIcon />
+                    <DeleteIcon onClick={handleBuildDelete}/>
                 </TableCell>
             </TableRow>
             {

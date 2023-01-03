@@ -9,8 +9,8 @@ const AddBuildingModal = (props) => {
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     const dispatch = useDispatch()
-    const formSubmmit = (data,resolve)=>{
-        dispatch(startBuildingCreate(data,resolve))
+    const formSubmmit = (data, resolve) => {
+        dispatch(startBuildingCreate(data, resolve))
     }
     return (
         <div>
@@ -21,8 +21,8 @@ const AddBuildingModal = (props) => {
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
-                <Box className="modal-form">
-                    <BuildingForm handleClose={handleClose} formSubmmit={formSubmmit}/>
+                <Box className="modal-form" >
+                    <BuildingForm handleClose={handleClose} formSubmmit={formSubmmit} />
                 </Box>
             </Modal>
         </div>

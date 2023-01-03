@@ -12,14 +12,13 @@ const BuildingForm = (props) => {
             return !build.isDeleted && build._id === _id
         })
     })
-
-    console.log(building)
+    
     const formik = useFormik({
         initialValues:{
-            title:building.title?building.title:"",
-            floors:building.floors?building.floors:"",
-            rooms:building.rooms?building.rooms:"",
-            beds:building.beds?building.beds:""
+            title:building && building.title ? building.title : "",
+            floors:building && building.floors?building.floors:"",
+            rooms:building && building.rooms?building.rooms:"",
+            beds:building && building.beds?building.beds:""
         },
         validationSchema:Yup.object({
             title:Yup.string().required().typeError("title is requried"),

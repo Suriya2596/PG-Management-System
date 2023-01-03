@@ -62,7 +62,7 @@ const buildingList = (data) => {
     }
 }
 
-export const startBuildingUpdate = (requestData,resolve,_id)=>{
+export const startBuildingUpdate = (requestData,_id,resolve)=>{
     return (dispatch)=>{
         axios.put(`http://localhost:3500/api/user/building/${_id}`,requestData ,{
             headers:{
@@ -74,7 +74,6 @@ export const startBuildingUpdate = (requestData,resolve,_id)=>{
                 if (buildingData.hasOwnProperty("errors")) {
                     window.alert(buildingData.message)
                 } else {
-                    window.alert("added")
                     dispatch(buildingUpdate(buildingData))
                     resolve()
                 }
@@ -84,6 +83,33 @@ export const startBuildingUpdate = (requestData,resolve,_id)=>{
 const buildingUpdate = (data)=>{
     return {
         type:"BUILDING_UPDATE",
+        payload:data
+    }
+}
+
+export const startBuildingDestroy = (_id)=>{
+    return (dispatch)=>{
+        axios.delete(`http://localhost:3500/api/user/building/${_id}`,{
+            headers:{
+                "Authorization":localStorage.getItem("tokenPG")
+            }
+        })
+        .then((response)=>{
+            const buildingData = response.data
+            if(buildingData.hasOwnProperty("error")){
+                window.alert(buildingData.message)
+            }else if(response.status===200){
+                dispatch(buildingDestroy(buildingData))
+            }
+        })
+        .catch((err)=>{
+            window.alert(`building Delete ${err.message}`)
+        })
+    }
+}
+const buildingDestroy = (data)=>{
+    return {
+        type:"BUILDING_DESTROY",
         payload:data
     }
 }

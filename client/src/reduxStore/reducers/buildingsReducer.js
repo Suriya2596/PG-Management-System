@@ -18,6 +18,11 @@ const buildingsReducer = ( state=initialValue,action )=>{
                 }
             })
         }
+        case "BUILDING_DESTROY":{
+            return state.filter((building)=>{
+                return building._id !== action.payload._id
+            })
+        }
         case "LOGOUT":{
             return []
         }

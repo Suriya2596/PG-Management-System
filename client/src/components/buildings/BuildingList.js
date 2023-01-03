@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { startBuildingList } from "../../reduxStore/actions/buildingsAction"
 import { TableContainer, Table, TableHead, TableBody, TableCell, TableRow, Paper } from "@mui/material"
@@ -9,7 +9,7 @@ const BuildingList = (props) => {
 
     useEffect(() => {
         dispatch(startBuildingList())
-    }, [])
+    }, [dispatch])
 
     const rows = useSelector((state) => {
         return state.buildings.filter((building) => {

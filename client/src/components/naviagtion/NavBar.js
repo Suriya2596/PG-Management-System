@@ -30,6 +30,8 @@ const NavBar = (props) => {
                     <div>
                         <Link to="/">Dashboard</Link>
                         <Link to="/buildings">Buildings</Link>
+                        <Link to="/rooms">Rooms</Link>
+                        <Link to="/tenants">Tenants</Link>
                         <Link to="/" onClick={() => {
                             localStorage.clear()
                             handleIsLoggedIn()
@@ -49,6 +51,8 @@ const NavBar = (props) => {
                 <Route path={"/register"} component={UserRegister} exact />
 
                 <PrivateRouter path={"/buildings"} component={Buildings} />
+                <PrivateRouter path={"/rooms"} component={Rooms}/>
+                <PrivateRouter path={"/tenants"} component={Tenants} />
 
                 <Route path="*" component={NotFound}/>
             </Switch>
