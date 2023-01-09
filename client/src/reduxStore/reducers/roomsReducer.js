@@ -5,6 +5,9 @@ const roomsReducer = (state=initialValue,action)=>{
         case "ROOM_CREATE" : {
             return [...state,action.payload]
         }
+        case "ROOM_LIST" : {
+            return [...action.payload]
+        }
         default : {
             return [...state]
         }

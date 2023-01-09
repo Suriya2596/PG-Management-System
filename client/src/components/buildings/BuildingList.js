@@ -11,12 +11,11 @@ const BuildingList = (props) => {
         dispatch(startBuildingList())
     }, [dispatch])
 
-    const rows = useSelector((state) => {
+    const buildings = useSelector((state) => {
         return state.buildings.filter((building) => {
             return !building.isDeleted
         })
     })
-    
 
     return (
         <div>
@@ -33,9 +32,18 @@ const BuildingList = (props) => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {rows.map((row) => (
-                            <BuildingItem key={row._id} {...row}/>
-                        ))}
+                        {
+                            buildings.length === 0 ? (
+                                <TableRow>
+                                    <TableCell>No data found</TableCell>
+                                </TableRow>
+                            ) : (
+                                buildings.map((building) => (
+                                    <BuildingItem key={building._id} {...building}/>
+                                ))
+                            )
+                        }
+                        
                     </TableBody>
                 </Table>
             </TableContainer>

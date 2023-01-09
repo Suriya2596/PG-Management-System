@@ -92,8 +92,7 @@ p{
   box-shadow: 2px 8px 18px 0px #0a042176;
 }
 .primary-btn{
-  margin: 8px !important;
-  margin-top: 12px !important;
+  margin: 12px 0px !important;
   padding: 12px 30px ;
   color: #fff ;
   outline: 0px;

@@ -1,11 +1,14 @@
 import React from "react"
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import RoomsForm from "./RoomsForm";
 
+import { startRoomsCreate } from "../../reduxStore/actions/roomsAction";
+import { useDispatch } from "react-redux"
+
 const AddRooms = (props) => {
+    const dispatch = useDispatch()
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -21,9 +24,12 @@ const AddRooms = (props) => {
         boxShadow: 24,
         p: 4,
     };
+    const formSubmit = (data,reSolve)=>{
+        dispatch( startRoomsCreate(data,reSolve) )
+    }
     return (
         <div>
-            <Button onClick={handleOpen}>Open modal</Button>
+            <button onClick={handleOpen} className="primary-btn">Add Room</button>
             <Modal
                 open={open}
                 onClose={handleClose}
@@ -31,7 +37,7 @@ const AddRooms = (props) => {
                 aria-describedby="modal-modal-description"
             >
                 <Box sx={style}>
-                    <RoomsForm />
+                    <RoomsForm formSubmit={formSubmit} handleClose={handleClose}/>
                 </Box>
             </Modal>
         </div>
